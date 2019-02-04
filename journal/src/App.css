@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+
+.login-button-true {
+  text-decoration: none;
+}

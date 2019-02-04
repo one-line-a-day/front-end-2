@@ -18,12 +18,10 @@ class LoginForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
-    if (this.state.username !== "" && this.state.password !== "") {
-      return console.log("good");
-    } else if (this.state.username === "") {
-      return <alert>Plese enter your username</alert>;
+    if (this.state.username === "") {
+      return alert("Plese enter your username");
     } else if (this.state.password === "") {
-      return <alert>Plese enter your password</alert>;
+      return alert("Plese enter your password");
     }
   };
 
@@ -31,7 +29,11 @@ class LoginForm extends Component {
     return (
       <div>
         <h2>Login Form</h2>
-        <form className="login-form" onSubmit={this.onSubmit}>
+        <form
+          className="login-form"
+          onSubmit={this.onSubmit}
+          autoComplete="off"
+        >
           <input
             className="login-input"
             type="text"
@@ -39,6 +41,7 @@ class LoginForm extends Component {
             name="username"
             value={this.state.username}
             onChange={this.onChange}
+            autoComplete="none"
           />
           <input
             className="login-input"
@@ -47,12 +50,19 @@ class LoginForm extends Component {
             name="password"
             value={this.state.password}
             onChange={this.onChange}
+            autoComplete="none"
           />
           <button className="login-button" onClick={this.onSubmit}>
-            Login
+            {this.state.username !== "" && this.state.password !== "" ? (
+              <Link to="/home" className="login-button-true">
+                Login
+              </Link>
+            ) : (
+              <div>Login</div>
+            )}
           </button>
           <p className="not-registered">
-            Not registered? <Link to={`./register`}>Register Now</Link>
+            Not registered? <Link to="/register">Register Now</Link>
           </p>
         </form>
       </div>
