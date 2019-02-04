@@ -13,7 +13,6 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       email: "",
       username: "",
       password: ""
@@ -59,30 +58,6 @@ class Register extends Component {
         >
           <Col>
             <FormGroup style={{ marginTop: "10px" }}>
-              <Label>Name</Label>
-              <Input
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={this.onChange}
-                placeholder="Name"
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup style={{ marginTop: "10px" }}>
-              <Label>Email</Label>
-              <Input
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                placeholder="Email Address"
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup style={{ marginTop: "10px" }}>
               <Label>Username</Label>
               <Input
                 type="text"
@@ -102,6 +77,18 @@ class Register extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.onChange}
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup style={{ marginTop: "10px" }}>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                placeholder="Email Address"
               />
             </FormGroup>
           </Col>
