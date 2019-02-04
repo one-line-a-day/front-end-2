@@ -2,6 +2,30 @@
   text-align: center;
 }
 
-.login-button-true {
+.login-container {
+  background-color: #442587;
+  color: #fff;
+  max-width: 1000px;
+  height: 100vh;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.register-link {
+  color: #fff;
+}
+
+.register-link:hover {
+  color: #fdb9ac;
   text-decoration: none;
+}
+
+.textfield {
+  color: #fff;
+}
+
+.not-registered {
+  margin-top: 70px;
 }
