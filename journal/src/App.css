@@ -37,3 +37,28 @@
   display: flex;
   align-items: center;
 }
+
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.post {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.newEntry {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.homePage {
+  background: #f5f5f7;
+}

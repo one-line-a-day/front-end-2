@@ -14,24 +14,13 @@ import {
 } from "../actions";
 
 const initialState = {
-  users: [
-    {
-      username: "",
-      email: "",
-      password: ""
-    }
-  ],
-  posts: [
-    {
-      line: "",
-      date: "",
-      id: ""
-    }
-  ],
+  users: [],
+  posts: [],
   fetchingPosts: false,
   addingPost: false,
   deletingPost: false,
-  editingPost: false
+  editingPost: false,
+  error: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,7 +40,58 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingPosts: false,
+        error: action.payload
+      };
+    case ADD_POST_START:
+      return {
+        ...state,
+        addingPost: true
+      };
+    case ADD_POST_SUCCESS:
+      return {
+        ...state,
+        addingPost: false,
         posts: action.payload
+      };
+    case ADD_POST_FAILURE:
+      return {
+        ...state,
+        addingPost: false,
+        error: action.payload
+      };
+    case DELETE_POST_START:
+      return {
+        ...state,
+        deletingPost: true
+      };
+    case DELETE_POST_SUCCESS:
+      return {
+        ...state,
+        deletingPost: false,
+        posts: action.payload
+      };
+    case DELETE_POST_FAILURE:
+      return {
+        ...state,
+        deletingPost: false,
+        error: action.payload
+      };
+    case EDIT_POST_START:
+      return {
+        ...state,
+        editingPost: true
+      };
+    case EDIT_POST_SUCCESS:
+      return {
+        ...state,
+        editingPost: false,
+        posts: action.payload
+      };
+    case EDIT_POST_FAILURE:
+      return {
+        ...state,
+        editingPost: false,
+        error: action.payload
       };
     default:
       return { state };

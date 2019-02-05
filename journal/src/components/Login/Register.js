@@ -43,7 +43,11 @@ class Register extends Component {
           display: "flex"
         }}
       >
-        <h2>One-Line-A-Day</h2>
+        <img
+          src="https://i.imgur.com/uwb2TGj.png"
+          alt="logo"
+          style={{ width: "350px", height: "150px", margin: "0 auto" }}
+        />
         <Form
           className="form"
           style={{
@@ -53,7 +57,8 @@ class Register extends Component {
             margin: "0 auto",
             border: "1px solid white",
             padding: "10px",
-            borderRadius: "10px"
+            borderRadius: "10px",
+            marginTop: "20px"
           }}
         >
           <Col>
