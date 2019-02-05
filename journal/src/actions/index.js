@@ -31,22 +31,35 @@ export const addPost = newPost => dispatch => {
       "https://one-line-a-day-backend.herokuapp.com/api/lines/testcall",
       newPost
     )
-    .then(res => dispatch({ type: ADD_POST_SUCCESS, payload: res.data }))
-    .catch(err => dispatch({ type: ADD_POST_FAILURE, payload: err }));
+    .then(res =>
+      axios
+        .get("https://one-line-a-day-backend.herokuapp.com/api/lines/testcall")
+        .then(res => dispatch({ type: ADD_POST_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: ADD_POST_FAILURE, payload: err }))
+    );
 };
 
 export const deletePost = id => dispatch => {
   dispatch({ type: DELETE_POST_START });
   axios
-    .delete(`${id}`)
-    .then(res => dispatch({ type: DELETE_POST_SUCCESS, payload: res.data }))
-    .catch(err => dispatch({ type: DELETE_POST_FAILURE, payload: err }));
+    .delete(
+      `https://one-line-a-day-backend.herokuapp.com/api/lines/testcall/${id}`
+    )
+    .then(res =>
+      axios
+        .get("https://one-line-a-day-backend.herokuapp.com/api/lines/testcall")
+        .then(res => dispatch({ type: DELETE_POST_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: DELETE_POST_FAILURE, payload: err }))
+    );
 };
 
 export const editPost = (id, post) => dispatch => {
   dispatch({ type: EDIT_POST_START });
   axios
-    .put(`${id}`, post)
+    .put(
+      `https://one-line-a-day-backend.herokuapp.com/api/lines/testcall/${id}`,
+      post
+    )
     .then(res => dispatch({ type: EDIT_POST_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: EDIT_POST_FAILURE, payload: err }));
 };

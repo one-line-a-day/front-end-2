@@ -4,12 +4,18 @@ import { connect } from "react-redux";
 import { getPosts, addPost, deletePost, editPost } from "../../actions";
 import NavBar from "./NavBar";
 import NewPost from "./NewPost";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTrash, faEdit);
 class HomePage extends Component {
   constructor() {
     super();
     this.state = {
       line: "",
-      date: ""
+      date: "",
+      user_id: 3
     };
   }
 
@@ -18,7 +24,9 @@ class HomePage extends Component {
   }
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value
+    });
     console.log(this.state);
   };
 
@@ -26,13 +34,19 @@ class HomePage extends Component {
     e.preventDefault();
     const newPost = {
       line: this.state.line,
-      date: this.state.date
+      date: this.state.date,
+      user_id: this.state.user_id
     };
     this.props.addPost(newPost);
     this.setState({
       line: "",
       date: ""
     });
+  };
+
+  erasePost = (e, id) => {
+    e.preventDefault();
+    this.props.deletePost(id);
   };
 
   render() {
@@ -45,6 +59,8 @@ class HomePage extends Component {
             date={this.state.date}
             line={this.state.line}
             onChange={this.onChange}
+            posts={this.props.posts}
+            createPost={this.createPost}
           />
 
           <div className="posts-container">
@@ -52,9 +68,23 @@ class HomePage extends Component {
               ? this.props.posts.map(post => {
                   return (
                     <div className="post">
-                      <p className="post.attribute">{post.user_id}</p>
-                      <p className="post.attribute">{post.line}</p>
-                      <p className="post.attribute">{post.date}</p>
+                      <p className="post-attribute-line">{post.line}</p>
+                      <div className="post-bottom-row">
+                        <p className="post-attribute-date">Date: {post.date}</p>
+                        <div className="icons">
+                          <FontAwesomeIcon
+                            icon="edit"
+                            color="#fdb9ac"
+                            cursor="pointer"
+                          />
+                          <FontAwesomeIcon
+                            icon="trash"
+                            color="#fdb9ac"
+                            onClick={e => this.erasePost(e, post.id)}
+                            cursor="pointer"
+                          />
+                        </div>
+                      </div>
                     </div>
                   );
                 })
