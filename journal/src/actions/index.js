@@ -45,12 +45,8 @@ export const deletePost = id => dispatch => {
     .delete(
       `https://one-line-a-day-backend.herokuapp.com/api/lines/testcall/${id}`
     )
-    .then(res =>
-      axios
-        .get("https://one-line-a-day-backend.herokuapp.com/api/lines/testcall")
-        .then(res => dispatch({ type: DELETE_POST_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: DELETE_POST_FAILURE, payload: err }))
-    );
+    .then(res => dispatch({ type: DELETE_POST_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: DELETE_POST_FAILURE, payload: err }));
 };
 
 export const editPost = (id, post) => dispatch => {

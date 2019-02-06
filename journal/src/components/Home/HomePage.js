@@ -15,7 +15,8 @@ class HomePage extends Component {
     this.state = {
       line: "",
       date: "",
-      user_id: 3
+      user_id: 0,
+      isEditing: false
     };
   }
 
@@ -35,18 +36,43 @@ class HomePage extends Component {
     const newPost = {
       line: this.state.line,
       date: this.state.date,
-      user_id: this.state.user_id
+      user_id: this.state.user_id,
+      isEditing: false
     };
     this.props.addPost(newPost);
     this.setState({
       line: "",
-      date: ""
+      date: "",
+      user_id: 0,
+      isEditing: false
     });
   };
 
   erasePost = (e, id) => {
     e.preventDefault();
+    console.log(id);
     this.props.deletePost(id);
+  };
+
+  populateForm = (e, post) => {
+    e.preventDefault();
+    this.setState({
+      line: post.line,
+      date: post.date,
+      user_id: post.id,
+      isEditing: true
+    });
+  };
+
+  updatePost = e => {
+    e.preventDefault();
+    const editedPost = {
+      line: this.state.line,
+      date: this.state.date,
+      user_id: this.state.id
+    };
+    this.props.editPost(this.state.id, editedPost);
+    this.setState({ line: "", date: "", user_id: 0, isEditing: false });
   };
 
   render() {
@@ -54,13 +80,15 @@ class HomePage extends Component {
       <div className="homePage">
         <NavBar />
         <div className="under-nav-container">
-          <h2>Home Page</h2>
+          <h2>Your One-Liners</h2>
           <NewPost
             date={this.state.date}
             line={this.state.line}
             onChange={this.onChange}
             posts={this.props.posts}
             createPost={this.createPost}
+            isEditing={this.state.isEditing}
+            updatePost={this.updatePost}
           />
 
           <div className="posts-container">
@@ -75,6 +103,7 @@ class HomePage extends Component {
                           <FontAwesomeIcon
                             icon="edit"
                             color="#fdb9ac"
+                            onClick={e => this.populateForm(e, post)}
                             cursor="pointer"
                           />
                           <FontAwesomeIcon

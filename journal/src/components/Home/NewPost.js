@@ -39,20 +39,37 @@ class NewPost extends Component {
               onChange={this.props.onChange}
             />
 
-            <button
-              style={{
-                marginLeft: "600px",
-                background: "#fd5d67",
-                border: "2px solid purple",
-                borderRadius: "5px",
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "13px"
-              }}
-              onClick={this.props.createPost}
-            >
-              Post
-            </button>
+            {!this.props.isEditing ? (
+              <button
+                style={{
+                  marginLeft: "650px",
+                  background: "#fd5d67",
+                  border: "2px solid purple",
+                  borderRadius: "5px",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "13px"
+                }}
+                onClick={this.props.createPost}
+              >
+                Post
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "650px",
+                  background: "#fd5d67",
+                  border: "2px solid purple",
+                  borderRadius: "5px",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "13px"
+                }}
+                onClick={this.props.updatePost}
+              >
+                Finish
+              </button>
+            )}
           </div>
         </form>
       </div>

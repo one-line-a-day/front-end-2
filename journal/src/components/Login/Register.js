@@ -50,6 +50,7 @@ class Register extends Component {
         />
         <Form
           className="form"
+          autoComplete="new-password"
           style={{
             width: "50%",
             flexDirection: "column",
@@ -70,6 +71,7 @@ class Register extends Component {
                 value={this.state.username}
                 onChange={this.onChange}
                 placeholder="Username"
+                autoComplete="new-password"
               />
             </FormGroup>
           </Col>
@@ -82,6 +84,7 @@ class Register extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.onChange}
+                autoComplete="new-password"
               />
             </FormGroup>
           </Col>
@@ -94,6 +97,7 @@ class Register extends Component {
                 value={this.state.email}
                 onChange={this.onChange}
                 placeholder="Email Address"
+                autoComplete="new-password"
               />
             </FormGroup>
           </Col>

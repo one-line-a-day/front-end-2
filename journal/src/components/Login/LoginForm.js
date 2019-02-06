@@ -50,6 +50,7 @@ class LoginForm extends Component {
         />
         <Form
           className="form"
+          autoComplete="new-password"
           style={{
             width: "50%",
             flexDirection: "column",
@@ -70,6 +71,7 @@ class LoginForm extends Component {
                 value={this.state.username}
                 onChange={this.onChange}
                 placeholder="Username"
+                autoComplete="new-password"
               />
             </FormGroup>
           </Col>
@@ -82,6 +84,7 @@ class LoginForm extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.onChange}
+                autoComplete="new-password"
               />
             </FormGroup>
           </Col>
