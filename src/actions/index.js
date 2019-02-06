@@ -71,8 +71,8 @@ export const editPost = (id, post) => dispatch => {
 
 export const addUser = newUser => dispatch => {
   dispatch({ type: ADD_USER_START });
-  axios
-    .post(`${baseURL}/api/register`, newUser)
+  return axios
+    .post(`${baseURL}/api/users/register`, newUser)
     .then(res => {
       localStorage.setItem("token", res.data.token);
       return dispatch({ type: ADD_USER_SUCCESS, payload: res.data });

@@ -106,8 +106,7 @@ const reducer = (state = initialState, action) => {
     case ADD_USER_SUCCESS:
       return {
         ...state,
-        addingUser: false,
-        username: action.payload.username
+        addingUser: false
       };
     case ADD_USER_FAILURE:
       return {

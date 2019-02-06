@@ -42,10 +42,10 @@ class Register extends Component {
   addUser = e => {
     const newUser = {
       email: this.state.email,
-      name: this.state.name,
+      username: this.state.username,
       password: this.state.password
     };
-    this.props.addUser(newUser);
+    this.props.addUser(newUser).then(() => this.props.history.push("/home"));
   };
 
   render() {
