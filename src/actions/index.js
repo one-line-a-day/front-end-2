@@ -73,7 +73,10 @@ export const addUser = newUser => dispatch => {
   dispatch({ type: ADD_USER_START });
   axios
     .post(`${baseURL}/api/register`, newUser)
-    .then(res => dispatch({ type: ADD_USER_SUCCESS, payload: res.data }))
+    .then(res => {
+      localStorage.setItem("token", res.data.token);
+      return dispatch({ type: ADD_USER_SUCCESS, payload: res.data });
+    })
     .catch(err => dispatch({ type: ADD_USER_FAILURE, payload: err }));
 };
 
