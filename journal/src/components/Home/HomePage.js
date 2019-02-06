@@ -7,6 +7,7 @@ import NewPost from "./NewPost";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import ModalPopup from "./ModalPopup";
 
 library.add(faTrash, faEdit);
 class HomePage extends Component {
@@ -16,7 +17,8 @@ class HomePage extends Component {
       line: "",
       date: "",
       user_id: null,
-      isEditing: false
+      isEditing: false,
+      modal: null
     };
   }
 
@@ -60,6 +62,21 @@ class HomePage extends Component {
     });
   };
 
+  toggle = id => {
+    let result;
+    if (this.state.modal == id) {
+      result = null;
+    } else {
+      result = id;
+    }
+    return this.setState(
+      prevState => ({
+        modal: result
+      }),
+      () => console.log("NEW STATE: ", this.state)
+    );
+  };
+
   updatePost = e => {
     e.preventDefault();
     const editedPost = {
@@ -75,7 +92,8 @@ class HomePage extends Component {
       <div className="homePage">
         <NavBar />
         <div className="under-nav-container">
-          <h2>Your One-Liners</h2>
+          <h2>Create New Entry</h2>
+
           <NewPost
             date={this.state.date}
             line={this.state.line}
@@ -88,12 +106,26 @@ class HomePage extends Component {
 
           <div className="posts-container">
             {this.props.posts
-              ? this.props.posts.map(post => {
+              ? this.props.posts.map((post, index) => {
                   return (
                     <div className="post">
-                      <p className="post-attribute-line">{post.line}</p>
+                      <p
+                        className="post-attribute-line"
+                        onClick={() => this.toggle(index)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {post.line}
+                      </p>
+
                       <div className="post-bottom-row">
                         <p className="post-attribute-date">Date: {post.date}</p>
+                        <ModalPopup
+                          line={post.line}
+                          date={post.date}
+                          toggle={this.toggle}
+                          modal={this.state.modal}
+                          id={index}
+                        />
                         <div className="icons">
                           <FontAwesomeIcon
                             icon="edit"

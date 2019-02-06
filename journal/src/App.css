@@ -37,6 +37,7 @@
   font-size: 20px;
   display: flex;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .posts-container {
@@ -59,12 +60,13 @@
 
 .post-attribute-line {
   margin-top: 10px;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 .post-attribute-date {
   margin-bottom: 0px;
   font-size: 13px;
+  font-weight: bold;
 }
 
 .newEntry {

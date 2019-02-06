@@ -11,7 +11,11 @@ class NewPost extends Component {
       <div>
         <form className="newEntry">
           <input
-            style={{ border: "1px solid black", marginBottom: "10px" }}
+            style={{
+              border: "1px solid black",
+              marginBottom: "10px",
+              paddingLeft: "10px"
+            }}
             type="date"
             name="date"
             value={this.props.date}
@@ -31,7 +35,8 @@ class NewPost extends Component {
                 marginTop: "10px",
                 height: "40px",
                 width: "100%",
-                border: "none"
+                border: "none",
+                paddingLeft: "10px"
               }}
               placeholder="How's your day? 🎉"
               name="line"
