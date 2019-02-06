@@ -77,6 +77,7 @@ export const addUser = newUser => dispatch => {
       localStorage.setItem("token", res.data.token);
       return dispatch({ type: ADD_USER_SUCCESS, payload: res.data });
     })
+    .then(() => getPosts()(dispatch))
     .catch(err => dispatch({ type: ADD_USER_FAILURE, payload: err }));
 };
 

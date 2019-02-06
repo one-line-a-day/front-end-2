@@ -124,21 +124,7 @@ class Register extends Component {
             className="login-button"
             onClick={this.onSubmit}
           >
-            {this.state.username !== "" &&
-            this.state.password !== "" &&
-            this.state.email !== "" ? (
-              <Link
-                to="/home"
-                style={{
-                  color: "white",
-                  textDecoration: "none"
-                }}
-              >
-                Sign Up
-              </Link>
-            ) : (
-              <div>Sign Up</div>
-            )}
+            Sign Up
           </Button>
 
           <p className="not-registered">
