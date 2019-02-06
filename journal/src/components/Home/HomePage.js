@@ -15,7 +15,7 @@ class HomePage extends Component {
     this.state = {
       line: "",
       date: "",
-      user_id: 0,
+      user_id: null,
       isEditing: false
     };
   }
@@ -28,7 +28,6 @@ class HomePage extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   createPost = e => {
@@ -43,7 +42,7 @@ class HomePage extends Component {
     this.setState({
       line: "",
       date: "",
-      user_id: 0,
+      user_id: null,
       isEditing: false
     });
   };
@@ -69,10 +68,10 @@ class HomePage extends Component {
     const editedPost = {
       line: this.state.line,
       date: this.state.date,
-      user_id: this.state.id
+      user_id: this.state.user_id
     };
-    this.props.editPost(this.state.id, editedPost);
-    this.setState({ line: "", date: "", user_id: 0, isEditing: false });
+    this.props.editPost(this.state.user_id, editedPost);
+    this.setState({ line: "", date: "", user_id: null, isEditing: false });
   };
 
   render() {

@@ -5,6 +5,7 @@
 .login-container {
   background-color: #442587;
   color: #fff;
+  width: 100vw;
   max-width: 1000px;
   height: 100vh;
   padding-top: 10px;

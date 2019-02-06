@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Container,
   Col,
@@ -9,6 +10,8 @@ import {
   Button
 } from "reactstrap";
 import { Link } from "react-router-dom";
+
+import { addUser } from "../../actions";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +34,18 @@ class Register extends Component {
       return alert("Plese enter your password");
     } else if (this.state.email === "") {
       return alert("Plese enter your email");
+    } else {
+      this.addUser();
     }
+  };
+
+  addUser = e => {
+    const newUser = {
+      email: this.state.email,
+      name: this.state.name,
+      password: this.state.password
+    };
+    this.props.addUser(newUser);
   };
 
   render() {
@@ -139,4 +153,11 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => ({
+  username: state.username
+});
+
+export default connect(
+  mapStateToProps,
+  { addUser }
+)(Register);

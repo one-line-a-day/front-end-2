@@ -42,7 +42,7 @@ class NewPost extends Component {
             {!this.props.isEditing ? (
               <button
                 style={{
-                  marginLeft: "650px",
+                  marginLeft: "90%",
                   background: "#fd5d67",
                   border: "2px solid purple",
                   borderRadius: "5px",
@@ -57,7 +57,7 @@ class NewPost extends Component {
             ) : (
               <button
                 style={{
-                  marginLeft: "650px",
+                  marginLeft: "90%",
                   background: "#fd5d67",
                   border: "2px solid purple",
                   borderRadius: "5px",

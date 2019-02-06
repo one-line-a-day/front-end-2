@@ -10,16 +10,24 @@ import {
   DELETE_POST_FAILURE,
   EDIT_POST_START,
   EDIT_POST_SUCCESS,
-  EDIT_POST_FAILURE
+  EDIT_POST_FAILURE,
+  ADD_USER_START,
+  ADD_USER_SUCCESS,
+  ADD_USER_FAILURE,
+  LOGIN_USER_START,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAILURE
 } from "../actions";
 
 const initialState = {
-  users: [],
+  username: "",
   posts: [],
   fetchingPosts: false,
   addingPost: false,
   deletingPost: false,
   editingPost: false,
+  addingUser: false,
+  loggingUser: false,
   error: null
 };
 
@@ -91,6 +99,40 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         editingPost: false,
+        error: action.payload
+      };
+    case ADD_USER_START:
+      return {
+        ...state,
+        addingUser: true
+      };
+    case ADD_USER_SUCCESS:
+      return {
+        ...state,
+        addingUser: false,
+        username: action.payload.username
+      };
+    case ADD_USER_FAILURE:
+      return {
+        ...state,
+        addingUser: false,
+        error: action.payload
+      };
+    case LOGIN_USER_START:
+      return {
+        ...state,
+        loginUser: true
+      };
+    case LOGIN_USER_SUCCESS:
+      return {
+        ...state,
+        loginUser: false,
+        username: action.payload.username
+      };
+    case LOGIN_USER_FAILURE:
+      return {
+        ...state,
+        loginUser: false,
         error: action.payload
       };
     default:

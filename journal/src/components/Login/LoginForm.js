@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Container,
   Col,
@@ -9,6 +10,8 @@ import {
   Input,
   Button
 } from "reactstrap";
+
+import { loginUser } from "../../actions";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -21,17 +24,25 @@ class LoginForm extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     if (this.state.username === "") {
       return alert("Plese enter your username");
     } else if (this.state.password === "") {
       return alert("Plese enter your password");
+    } else {
+      this.loginUser();
     }
+  };
+
+  loginUser = () => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    this.props.loginUser(user);
   };
 
   render() {
@@ -125,4 +136,11 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = state => ({
+  username: state.username
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(LoginForm);
