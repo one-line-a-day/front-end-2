@@ -42,7 +42,7 @@ class LoginForm extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    this.props.loginUser(user);
+    this.props.loginUser(user).then(() => this.props.history.push("/home"));
   };
 
   render() {
@@ -109,19 +109,7 @@ class LoginForm extends Component {
             className="login-button"
             onClick={this.onSubmit}
           >
-            {this.state.username !== "" && this.state.password !== "" ? (
-              <Link
-                to="/home"
-                style={{
-                  color: "white",
-                  textDecoration: "none"
-                }}
-              >
-                Login
-              </Link>
-            ) : (
-              <div>Login</div>
-            )}
+            Login
           </Button>
 
           <p className="not-registered">

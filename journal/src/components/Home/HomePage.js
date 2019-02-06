@@ -34,16 +34,13 @@ class HomePage extends Component {
     e.preventDefault();
     const newPost = {
       line: this.state.line,
-      date: this.state.date,
-      user_id: this.state.user_id,
-      isEditing: false
+      date: this.state.date
     };
+    console.log(newPost);
     this.props.addPost(newPost);
     this.setState({
       line: "",
-      date: "",
-      user_id: null,
-      isEditing: false
+      date: ""
     });
   };
 
@@ -67,8 +64,7 @@ class HomePage extends Component {
     e.preventDefault();
     const editedPost = {
       line: this.state.line,
-      date: this.state.date,
-      user_id: this.state.user_id
+      date: this.state.date
     };
     this.props.editPost(this.state.user_id, editedPost);
     this.setState({ line: "", date: "", user_id: null, isEditing: false });

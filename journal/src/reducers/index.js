@@ -58,8 +58,7 @@ const reducer = (state = initialState, action) => {
     case ADD_POST_SUCCESS:
       return {
         ...state,
-        addingPost: false,
-        posts: action.payload
+        addingPost: false
       };
     case ADD_POST_FAILURE:
       return {
@@ -75,8 +74,7 @@ const reducer = (state = initialState, action) => {
     case DELETE_POST_SUCCESS:
       return {
         ...state,
-        deletingPost: false,
-        posts: action.payload
+        deletingPost: false
       };
     case DELETE_POST_FAILURE:
       return {
@@ -92,8 +90,7 @@ const reducer = (state = initialState, action) => {
     case EDIT_POST_SUCCESS:
       return {
         ...state,
-        editingPost: false,
-        posts: action.payload
+        editingPost: false
       };
     case EDIT_POST_FAILURE:
       return {
