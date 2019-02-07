@@ -53,19 +53,9 @@ class HomePage extends Component {
     this.props.deletePost(id);
   };
 
-  populateForm = (e, post) => {
-    e.preventDefault();
-    this.setState({
-      line: post.line,
-      date: post.date,
-      user_id: post.id,
-      isEditing: true
-    });
-  };
-
   toggle = id => {
     let result;
-    if (this.state.modal == id) {
+    if (this.state.modal === id) {
       result = null;
     } else {
       result = id;
@@ -78,14 +68,22 @@ class HomePage extends Component {
     );
   };
 
-  updatePost = e => {
+  populateForm = (e, post) => {
     e.preventDefault();
-    const editedPost = {
-      line: this.state.line,
-      date: this.state.date
-    };
-    this.props.editPost(this.state.user_id, editedPost);
+    this.setState({
+      line: post.line,
+      date: post.date,
+      user_id: post.id,
+      isEditing: true
+    });
+    this.toggle(post.id);
+  };
+
+  updatePost = (e, id, editedPost) => {
+    e.preventDefault();
+    this.props.editPost(id, editedPost);
     this.setState({ line: "", date: "", user_id: null, isEditing: false });
+    this.toggle(id);
   };
 
   render() {
@@ -111,7 +109,7 @@ class HomePage extends Component {
                       cardHeaderStyle={{ display: "none" }}
                       bubbleStyle={{
                         background: "#442587",
-                        border: "1px solid white"
+                        border: "1px solid #fdb9ac"
                       }}
                       contentStyle={{
                         textAlign: "left",
@@ -135,7 +133,7 @@ class HomePage extends Component {
                           <FontAwesomeIcon
                             icon="edit"
                             color="#fd5d67"
-                            onClick={e => this.populateForm(e, post)}
+                            onClick={() => this.toggle(index)}
                             cursor="pointer"
                           />
                           <FontAwesomeIcon
@@ -151,12 +149,14 @@ class HomePage extends Component {
                           toggle={this.toggle}
                           modal={this.state.modal}
                           id={index}
+                          postID={post.id}
+                          userID={this.state.user_id}
+                          updatePost={this.updatePost}
+                          post={post}
                         />
                         <p
                           className="post-attribute-line"
-                          onClick={() => this.toggle(index)}
                           style={{
-                            cursor: "pointer",
                             color: "black"
                           }}
                         >

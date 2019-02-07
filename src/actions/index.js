@@ -59,11 +59,19 @@ export const deletePost = id => dispatch => {
 };
 
 export const editPost = (id, post) => dispatch => {
+  console.log(id, post);
   dispatch({ type: EDIT_POST_START });
   axios
-    .patch(`${baseURL}/api/lines/${id}`, post, {
-      headers: { authorization: localStorage.getItem("token") }
-    })
+    .patch(
+      `${baseURL}/api/lines/${id}`,
+      { line: post },
+      {
+        headers: {
+          Authorization: window.localStorage.token,
+          "Content-Type": "application/json"
+        }
+      }
+    )
     .then(res => dispatch({ type: EDIT_POST_SUCCESS, payload: res.data }))
     .then(() => getPosts()(dispatch))
     .catch(err => dispatch({ type: EDIT_POST_FAILURE, payload: err }));
