@@ -102,28 +102,35 @@ class HomePage extends Component {
             isEditing={this.state.isEditing}
             updatePost={this.updatePost}
           />
-          <div className="posts-container">
+
+          <Timeline>
             {this.props.posts
               ? this.props.posts.map((post, index) => {
                   return (
-                    <div className="post">
-                      <p
-                        className="post-attribute-line"
-                        onClick={() => this.toggle(index)}
-                        style={{ cursor: "pointer" }}
+                    <TimelineEvent
+                      cardHeaderStyle={{ display: "none" }}
+                      bubbleStyle={{
+                        background: "#442587",
+                        border: "1px solid white"
+                      }}
+                      contentStyle={{
+                        textAlign: "left",
+                        width: "90%",
+                        border: "2px solid offwhite",
+                        backgroundColor: "white",
+                        marginBottom: "20px",
+                        wordWrap: "break-word",
+                        borderRadius: "10px",
+                        boxShadow: "1px 1px 3px gray"
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column"
+                        }}
                       >
-                        {post.line}
-                      </p>
-
-                      <div className="post-bottom-row">
-                        <p className="post-attribute-date">Date: {post.date}</p>
-                        <ModalPopup
-                          line={post.line}
-                          date={post.date}
-                          toggle={this.toggle}
-                          modal={this.state.modal}
-                          id={index}
-                        />
+                        <p className="post-attribute-date">{post.date}</p>
                         <div className="icons">
                           <FontAwesomeIcon
                             icon="edit"
@@ -138,12 +145,29 @@ class HomePage extends Component {
                             cursor="pointer"
                           />
                         </div>
+                        <ModalPopup
+                          line={post.line}
+                          date={post.date}
+                          toggle={this.toggle}
+                          modal={this.state.modal}
+                          id={index}
+                        />
+                        <p
+                          className="post-attribute-line"
+                          onClick={() => this.toggle(index)}
+                          style={{
+                            cursor: "pointer",
+                            color: "black"
+                          }}
+                        >
+                          {post.line}
+                        </p>
                       </div>
-                    </div>
+                    </TimelineEvent>
                   );
                 })
               : null}
-          </div>
+          </Timeline>
         </div>
       </div>
     );
