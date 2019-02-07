@@ -79,6 +79,10 @@
   margin-top: 10px;
   margin-bottom: 30px;
   padding: 0px 20px 20px 10px;
+  letter-spacing: 0.5px;
+  font-family: "ubuntu";
+  font-weight: 325;
+  font-size: 14px;
 }
 
 .post-attribute-date {
