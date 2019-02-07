@@ -50,7 +50,7 @@ class LoginForm extends Component {
       <Container
         className="login-container"
         style={{
-          maxWidth: "1000px",
+          maxWidth: "100vw",
           display: "flex"
         }}
       >

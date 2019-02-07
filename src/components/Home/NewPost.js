@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCalendar);
+
 class NewPost extends Component {
   constructor(props) {
     super(props);
@@ -10,21 +16,33 @@ class NewPost extends Component {
     return (
       <div>
         <form className="newEntry">
-          <input
-            style={{
-              border: "1px solid black",
-              marginBottom: "10px",
-              paddingLeft: "10px"
-            }}
-            type="date"
-            name="date"
-            value={this.props.date}
-            onChange={this.props.onChange}
-          />
+          <div style={{ display: "flex" }}>
+            <FontAwesomeIcon
+              icon="calendar"
+              style={{
+                marginTop: "7px",
+                marginLeft: "10px"
+              }}
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <input
+              style={{
+                border: "1px solid #dfdbdb",
+                marginBottom: "10px",
+                paddingLeft: "10px",
+                background: "#dfdbdb"
+              }}
+              type="date"
+              name="date"
+              value={this.props.date}
+              onChange={this.props.onChange}
+            />
+          </div>
+
           <div
             style={{
-              border: "1px solid black",
-              background: "white",
+              background: "#dfdbdb;",
               paddingBottom: "15px"
             }}
           >
@@ -36,7 +54,8 @@ class NewPost extends Component {
                 height: "40px",
                 width: "100%",
                 border: "none",
-                paddingLeft: "10px"
+                paddingLeft: "10px",
+                background: "#dfdbdb"
               }}
               placeholder="How's your day? 🎉"
               name="line"
@@ -49,7 +68,7 @@ class NewPost extends Component {
                 style={{
                   marginLeft: "90%",
                   background: "#fd5d67",
-                  border: "2px solid purple",
+                  border: "2px solid pink",
                   borderRadius: "5px",
                   color: "white",
                   fontWeight: "bold",
@@ -64,7 +83,7 @@ class NewPost extends Component {
                 style={{
                   marginLeft: "90%",
                   background: "#fd5d67",
-                  border: "2px solid purple",
+                  border: "2px solid pink",
                   borderRadius: "5px",
                   color: "white",
                   fontWeight: "bold",

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import ModalPopup from "./ModalPopup";
+import { Timeline, TimelineEvent } from "react-event-timeline";
 
 library.add(faTrash, faEdit);
 class HomePage extends Component {
@@ -92,8 +93,6 @@ class HomePage extends Component {
       <div className="homePage">
         <NavBar />
         <div className="under-nav-container">
-          <h2>Create New Entry</h2>
-
           <NewPost
             date={this.state.date}
             line={this.state.line}
@@ -103,7 +102,6 @@ class HomePage extends Component {
             isEditing={this.state.isEditing}
             updatePost={this.updatePost}
           />
-
           <div className="posts-container">
             {this.props.posts
               ? this.props.posts.map((post, index) => {
@@ -129,13 +127,13 @@ class HomePage extends Component {
                         <div className="icons">
                           <FontAwesomeIcon
                             icon="edit"
-                            color="#fdb9ac"
+                            color="#fd5d67"
                             onClick={e => this.populateForm(e, post)}
                             cursor="pointer"
                           />
                           <FontAwesomeIcon
                             icon="trash"
-                            color="#fdb9ac"
+                            color="#fd5d67"
                             onClick={e => this.erasePost(e, post.id)}
                             cursor="pointer"
                           />

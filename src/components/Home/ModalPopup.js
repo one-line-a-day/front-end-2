@@ -14,6 +14,7 @@ class ModalPopup extends React.Component {
           isOpen={this.props.modal == this.props.id}
           toggle={() => this.props.toggle(this.props.id)}
           className={this.props.className}
+          style={{ wordWrap: "break-word" }}
         >
           <ModalHeader toggle={() => this.props.toggle(this.props.id)}>
             {this.props.date}
